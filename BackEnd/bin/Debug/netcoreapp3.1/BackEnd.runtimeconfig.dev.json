@@ -3,6 +3,7 @@
     "additionalProbingPaths": [
       "C:\\Users\\rmonc\\.dotnet\\store\\|arch|\\|tfm|",
       "C:\\Users\\rmonc\\.nuget\\packages",
+      "C:\\Program Files\\DevExpress 22.2\\Components\\Offline Packages",
       "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
       "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet"
     ]

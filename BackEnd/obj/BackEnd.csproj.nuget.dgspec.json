@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rmonc\\OneDrive\\Escritorio\\training\\Udemy\\Angular\\Angular_preguntas_y_respuestas\\PR.backEnd\\BackEnd\\BackEnd.csproj": {}
+    "C:\\Users\\rmonc\\OneDrive\\Escritorio\\training\\Udemy\\Angular\\Angular_preguntas_y_respuestas\\Pr.BackEnd\\BackEnd\\BackEnd.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rmonc\\OneDrive\\Escritorio\\training\\Udemy\\Angular\\Angular_preguntas_y_respuestas\\PR.backEnd\\BackEnd\\BackEnd.csproj": {
+    "C:\\Users\\rmonc\\OneDrive\\Escritorio\\training\\Udemy\\Angular\\Angular_preguntas_y_respuestas\\Pr.BackEnd\\BackEnd\\BackEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rmonc\\OneDrive\\Escritorio\\training\\Udemy\\Angular\\Angular_preguntas_y_respuestas\\PR.backEnd\\BackEnd\\BackEnd.csproj",
+        "projectUniqueName": "C:\\Users\\rmonc\\OneDrive\\Escritorio\\training\\Udemy\\Angular\\Angular_preguntas_y_respuestas\\Pr.BackEnd\\BackEnd\\BackEnd.csproj",
         "projectName": "BackEnd",
-        "projectPath": "C:\\Users\\rmonc\\OneDrive\\Escritorio\\training\\Udemy\\Angular\\Angular_preguntas_y_respuestas\\PR.backEnd\\BackEnd\\BackEnd.csproj",
+        "projectPath": "C:\\Users\\rmonc\\OneDrive\\Escritorio\\training\\Udemy\\Angular\\Angular_preguntas_y_respuestas\\Pr.BackEnd\\BackEnd\\BackEnd.csproj",
         "packagesPath": "C:\\Users\\rmonc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rmonc\\OneDrive\\Escritorio\\training\\Udemy\\Angular\\Angular_preguntas_y_respuestas\\PR.backEnd\\BackEnd\\obj\\",
+        "outputPath": "C:\\Users\\rmonc\\OneDrive\\Escritorio\\training\\Udemy\\Angular\\Angular_preguntas_y_respuestas\\Pr.BackEnd\\BackEnd\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\DevExpress 22.2\\Components\\Offline Packages",

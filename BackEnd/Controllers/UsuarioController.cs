@@ -40,7 +40,7 @@ namespace BackEnd.Controllers
         [HttpGet]
         public string Get()
         {
-            return "... Aplicación corriendo ...";
+            return "... Aplicación corriendo Usuario ...";
         }
 
         [HttpPost]

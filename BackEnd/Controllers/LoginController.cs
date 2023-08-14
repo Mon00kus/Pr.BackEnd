@@ -18,7 +18,14 @@ namespace BackEnd.Controllers
         {
             _loginService = loginService;
         }
-        
+
+        // GET: api/<DefaultController>
+        [HttpGet]
+        public string Get()
+        {
+            return "... Aplicación corriendo Login ...";
+        }
+
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]Usuario usuario)
         {

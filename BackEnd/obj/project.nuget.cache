@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2EqD3RIqbLENsoreB/SD1iu1jzwhaSY9PjmmIOhawZfkXlbGTYRtaCZxWGkM8OfAKfLrxMM5TN+jwqaq9hI0RA==",
+  "dgSpecHash": "Z2TgJDIuNXa3wefAP5+GDUtI4psdzRlVD4oc+QGN2thGt5CwUL+ZvcFYpeUplCkUStwNteNSj2TNzQuoVQwjPA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rmonc\\OneDrive\\Escritorio\\training\\Udemy\\Angular\\Angular_preguntas_y_respuestas\\PR.backEnd\\BackEnd\\BackEnd.csproj",
+  "projectFilePath": "C:\\Users\\rmonc\\OneDrive\\Escritorio\\training\\Udemy\\Angular\\Angular_preguntas_y_respuestas\\Pr.BackEnd\\BackEnd\\BackEnd.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rmonc\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.8\\microsoft.aspnetcore.authentication.jwtbearer.3.1.8.nupkg.sha512",
     "C:\\Users\\rmonc\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
