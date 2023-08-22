@@ -36,7 +36,7 @@ namespace BackEnd.Persistence.Repositories
             var usuario = await _context.Usuarios
                 .Where(x => x.Id == idUsuario && x.PassWord == passworAnterior)
                 .FirstOrDefaultAsync();
-            return usuario; // Si encuentra un macheo quiere decir que la contraseña y el id de usuario ya existen por lo cual la contrasena es correcta, de lo contrario si devuelve null signifoca que la contraseña no es correcta
+            return usuario; // Si encuentra un macheo quiere decir que la contraseña y el id de usuario ya existen por lo cual la contrasena es correcta, de lo contrario si devuelve null significa que la contraseña no es correcta
         }
         public async Task UpdatePassword(Usuario usuario)
         {

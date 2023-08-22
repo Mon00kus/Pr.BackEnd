@@ -1,27 +1,11 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
-//using Microsoft.AspNetCore.Mvc;
-
-//namespace BackEnd.Controllers
-//{
-//    public class UsuarioController : Controller
-//    {
-//        public IActionResult Index()
-//        {
-//            return View();
-//        }
-//    }
-//}
+using Microsoft.AspNetCore.Mvc;
 
 using BackEnd.Domains.IServices;
 using BackEnd.Domains.Models;
 using BackEnd.DTO;
 using BackEnd.Utils;
-using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace BackEnd.Controllers
 {

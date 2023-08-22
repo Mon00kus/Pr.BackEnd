@@ -44,7 +44,12 @@ namespace BackEnd
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<ILoginService, LoginService>();
             services.AddScoped<ILoginRepository, LoginRepository>();
-            //
+
+            //cors
+            services.AddCors(options => options.AddPolicy("AllowQs_AsNgApp", 
+                builder => builder.AllowAnyOrigin()
+                                  .AllowAnyHeader()
+                                  .AllowAnyMethod()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,6 +64,8 @@ namespace BackEnd
                 app.UseExceptionHandler("/Home/Error");
             }
             app.UseStaticFiles();
+
+            app.UseCors("AllowQs_AsNgApp");
 
             app.UseRouting();
 
