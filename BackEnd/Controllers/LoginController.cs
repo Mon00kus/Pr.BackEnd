@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using BackEnd.Domains.IServices;
 using BackEnd.Domains.Models;
 using BackEnd.Utils;
+using Microsoft.Extensions.Configuration;
 
 namespace BackEnd.Controllers
 {
@@ -13,10 +14,12 @@ namespace BackEnd.Controllers
     public class LoginController : ControllerBase
     {
         private readonly ILoginService _loginService;
+        private readonly IConfiguration _configuration;
 
-        public LoginController(ILoginService loginService)
+        public LoginController(ILoginService loginService, IConfiguration configuration)
         {
             _loginService = loginService;
+            _configuration = configuration;
         }
 
         // GET: api/<DefaultController>
@@ -32,12 +35,15 @@ namespace BackEnd.Controllers
             try
             {
                 usuario.PassWord = Encriptar.EncriptarPassword(usuario.PassWord);
-                var user = await _loginService.ValidateUser(usuario); // devuelve un usuario si 
+                var user = await _loginService.ValidateUser(usuario); // devuelve un usuario si existe
+
                 if (user == null)
                 {
                   return BadRequest(new { message = "Usuario ó contraseña invalidos" });
                 }
-                return Ok(new { usuario = user });
+
+                var tokenString = JwtConfigurator.GetToken(user, _configuration);
+                return Ok(new { token = tokenString });                
             }
             catch (System.Exception ex)
             {

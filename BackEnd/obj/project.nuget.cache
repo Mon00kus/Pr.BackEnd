@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "wNpBEHkg22G9d1aOmNQMYXoZuPweq744zEudoVjt1yuT2PjFwN+JL+NkmEAKe8mz5Od1fvjg1oh92mBP2IkzCg==",
+  "dgSpecHash": "TVg5p641pfOxZUOZGenYOeU7Z8x4sLciU7FNuyDmYRNLYXS9YHK97Lwq38lr/zkojyEVwalbfoSAFJyYKApsUQ==",
   "success": true,
   "projectFilePath": "C:\\Apps\\Pr.BackEnd\\BackEnd\\BackEnd.csproj",
   "expectedPackageFiles": [
@@ -104,11 +104,7 @@
     "C:\\Users\\Raul\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\Raul\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\Raul\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\Raul\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
-    "C:\\Users\\Raul\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512",
-    "C:\\Users\\Raul\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512",
-    "C:\\Users\\Raul\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
-    "C:\\Users\\Raul\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.32\\microsoft.netcore.app.host.win-x64.3.1.32.nupkg.sha512"
+    "C:\\Users\\Raul\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }
