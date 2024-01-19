@@ -47,6 +47,8 @@ namespace BackEnd
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<ILoginService, LoginService>();
             services.AddScoped<ILoginRepository, LoginRepository>();
+            services.AddScoped<ICuestionarioService, CuestionarioService>();
+            services.AddScoped<ICuestionarioRepository, CuestionarioRepository>();
 
             //Cors
             services.AddCors(options => options.AddPolicy("AllowQs_AsNgApp", 
