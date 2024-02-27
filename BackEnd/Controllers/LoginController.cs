@@ -1,10 +1,12 @@
-﻿using System.Threading.Tasks;
-
-using Microsoft.AspNetCore.Mvc;
-
-using BackEnd.Domains.IServices;
-using BackEnd.Domains.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using BackEnd.Domain.IServices;
+using BackEnd.Domain.Models;
 using BackEnd.Utils;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
 namespace BackEnd.Controllers
@@ -14,19 +16,11 @@ namespace BackEnd.Controllers
     public class LoginController : ControllerBase
     {
         private readonly ILoginService _loginService;
-        private readonly IConfiguration _configuration;
-
-        public LoginController(ILoginService loginService, IConfiguration configuration)
+        private readonly IConfiguration _config;
+        public LoginController(ILoginService loginService, IConfiguration config)
         {
             _loginService = loginService;
-            _configuration = configuration;
-        }
-
-        // GET: api/<DefaultController>
-        [HttpGet]
-        public string Get()
-        {
-            return "... Aplicación corriendo Login ...";
+            _config = config;
         }
 
         [HttpPost]
@@ -34,20 +28,18 @@ namespace BackEnd.Controllers
         {
             try
             {
-                usuario.PassWord = Encriptar.EncriptarPassword(usuario.PassWord);
-                var user = await _loginService.ValidateUser(usuario); // devuelve un usuario si existe
-
-                if (user == null)
+                usuario.Password = Encriptar.EncriptarPassword(usuario.Password);
+                var user = await _loginService.ValidateUser(usuario);
+                if(user == null)
                 {
-                  return BadRequest(new { message = "Usuario ó contraseña invalidos" });
+                    return BadRequest(new { message = "Usuario o contraseña invalidos" });
                 }
-
-                var tokenString = JwtConfigurator.GetToken(user, _configuration);
-                return Ok(new { token = tokenString });                
+                string tokenString = JwtConfigurator.GetToken(user, _config);
+                return Ok(new { token = tokenString });
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                return BadRequest(ex.Message);                     
+                return BadRequest(ex.Message);
             }
         }
     }

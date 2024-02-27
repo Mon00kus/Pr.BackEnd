@@ -1,22 +1,24 @@
-﻿using BackEnd.Domains.IRepositories;
-using BackEnd.Domains.IServices;
-using BackEnd.Domains.Models;
+﻿using BackEnd.Domain.IRepositories;
+using BackEnd.Domain.IServices;
+using BackEnd.Domain.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace BackEnd.Services
 {
-    public class CuestionarioService : ICuestionarioService
+    public class CuestionarioService: ICuestionarioService
     {
         private readonly ICuestionarioRepository _cuestionarioRepository;
-
         public CuestionarioService(ICuestionarioRepository cuestionarioRepository)
         {
             _cuestionarioRepository = cuestionarioRepository;
         }
 
-        public async Task CreateCuestionario(Cuestonario cuestonario)
-        {            
-            await _cuestionarioRepository.CreateCuestionario(cuestonario);
+        public async Task CreateCuestionario(Cuestionario cuestionario)
+        {
+            await _cuestionarioRepository.CreateCuestionario(cuestionario);
         }
     }
 }

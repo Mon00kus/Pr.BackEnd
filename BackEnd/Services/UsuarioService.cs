@@ -1,6 +1,6 @@
-﻿using BackEnd.Domains.IRepositories;
-using BackEnd.Domains.IServices;
-using BackEnd.Domains.Models;
+﻿using BackEnd.Domain.IRepositories;
+using BackEnd.Domain.IServices;
+using BackEnd.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace BackEnd.Services
 {
-    public class UsuarioService : IUsuarioService
+    public class UsuarioService: IUsuarioService
     {
         private readonly IUsuarioRepository _usuarioRepository;
-        public UsuarioService(IUsuarioRepository usuarioRepository )
+        public UsuarioService(IUsuarioRepository usuarioRepository)
         {
             _usuarioRepository = usuarioRepository;
         }
@@ -21,16 +21,16 @@ namespace BackEnd.Services
             await _usuarioRepository.SaveUser(usuario);
         }
 
-
         public async Task<bool> ValidateExistence(Usuario usuario)
         {
-            return await  _usuarioRepository.ValidateExistence(usuario);
+            return await _usuarioRepository.ValidateExistence(usuario);
         }
 
-        public async Task<Usuario> ValidatePassword(int IdUsuario, string passwordAnterior)
+        public async Task<Usuario> ValidatePassword(int idUsuario, string passwordAnterior)
         {
-            return await _usuarioRepository.ValidatePassword(IdUsuario, passwordAnterior);
+            return await _usuarioRepository.ValidatePassword(idUsuario, passwordAnterior);
         }
+
         public async Task UpdatePassword(Usuario usuario)
         {
             await _usuarioRepository.UpdatePassword(usuario);

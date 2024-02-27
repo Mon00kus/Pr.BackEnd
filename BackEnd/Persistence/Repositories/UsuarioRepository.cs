@@ -1,15 +1,15 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-
-using Microsoft.EntityFrameworkCore;
-
-using BackEnd.Domains.IRepositories;
+﻿using BackEnd.Domain.IRepositories;
+using BackEnd.Domain.Models;
 using BackEnd.Persistence.Context;
-using BackEnd.Domains.Models;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace BackEnd.Persistence.Repositories
 {
-    public class UsuarioRepository : IUsuarioRepository
+    public class UsuarioRepository: IUsuarioRepository
     {
         private readonly AplicationDbContext _context;
         public UsuarioRepository(AplicationDbContext context)
@@ -17,33 +17,29 @@ namespace BackEnd.Persistence.Repositories
             _context = context;
         }
 
-        public async Task SaveUser(Usuario usuario)
+        public async Task SaveUser(Usuario usuario) 
         {
             _context.Add(usuario);
-
             await _context.SaveChangesAsync();
         }
 
         public async Task<bool> ValidateExistence(Usuario usuario)
         {
-            var validaExistence = await _context.Usuarios.AnyAsync(x => x.NombreUsuario == usuario.NombreUsuario);
-
-            return validaExistence;
+            var validateExistence = await _context.Usuario.AnyAsync(x => x.NombreUsuario == usuario.NombreUsuario);
+            return validateExistence;
         }
 
-        public async Task<Usuario> ValidatePassword(int idUsuario, string passworAnterior)
+        public async Task<Usuario> ValidatePassword(int idUsuario, string passwordAnterior)
         {
-            var usuario = await _context.Usuarios
-                .Where(x => x.Id == idUsuario && x.PassWord == passworAnterior)
-                .FirstOrDefaultAsync();
-            return usuario; // Si encuentra un macheo quiere decir que la contraseña y el id de usuario ya existen por lo cual la contrasena es correcta, de lo contrario si devuelve null significa que la contraseña no es correcta
+            var usuario = await _context.Usuario.Where(x => x.Id == idUsuario && x.Password == passwordAnterior).FirstOrDefaultAsync();
+            return usuario;
+
         }
+
         public async Task UpdatePassword(Usuario usuario)
         {
-            _context.Usuarios.Update(usuario);
-            //TODO: Verificar si es necesario validar si existe el registro para poder modificarlo.
+            _context.Update(usuario);
             await _context.SaveChangesAsync();
         }
-
     }
 }

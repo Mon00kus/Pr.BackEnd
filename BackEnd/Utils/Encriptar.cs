@@ -12,9 +12,10 @@ namespace BackEnd.Utils
         public static string EncriptarPassword(string input)
         {
             MD5 md5Hash = MD5.Create();
-            byte[] data = md5Hash.ComputeHash( Encoding.UTF8.GetBytes(input) );
+            // Convert the input string to a byte array and compute the hash.
+            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
             StringBuilder sBuilder = new StringBuilder();
-            for (int i = 0; i< data.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
                 sBuilder.Append(data[i].ToString("x2"));
             }

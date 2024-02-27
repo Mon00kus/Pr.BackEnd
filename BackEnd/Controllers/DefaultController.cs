@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace BackEnd.Controllers
 {
@@ -14,7 +16,7 @@ namespace BackEnd.Controllers
         [HttpGet]
         public string Get()
         {
-            return "Aplicación corriendo..!!!";
-        }        
+            return "Aplicación corriendo...!!!";
+        }
     }
 }

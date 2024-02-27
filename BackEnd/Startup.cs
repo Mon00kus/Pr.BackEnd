@@ -1,22 +1,23 @@
-using BackEnd.Domains.IRepositories;
-using BackEnd.Domains.IServices;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using BackEnd.Domain.IRepositories;
+using BackEnd.Domain.IServices;
 using BackEnd.Persistence.Context;
 using BackEnd.Persistence.Repositories;
 using BackEnd.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BackEnd
 {
@@ -31,44 +32,40 @@ namespace BackEnd
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {            
-            services.AddControllersWithViews();
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
-            services.AddDbContext<AplicationDbContext>(Options =>
-                   Options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
-            );
-
-            //Service & Repository
+        {
+            services.AddDbContext<AplicationDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+           // Service
             services.AddScoped<IUsuarioService, UsuarioService>();
-            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<ILoginService, LoginService>();
-            services.AddScoped<ILoginRepository, LoginRepository>();
             services.AddScoped<ICuestionarioService, CuestionarioService>();
+
+            // Repository
+            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            services.AddScoped<ILoginRepository, LoginRepository>();
             services.AddScoped<ICuestionarioRepository, CuestionarioRepository>();
 
-            //Cors
-            services.AddCors(options => options.AddPolicy("AllowQs_AsNgApp", 
-                builder => builder.AllowAnyOrigin()
-                                  .AllowAnyHeader()
-                                  .AllowAnyMethod()));
-            //Auth
+            // Cors
+            services.AddCors(options => options.AddPolicy("AllowWebapp",
+                                                builder => builder.AllowAnyOrigin()
+                                                                .AllowAnyHeader()
+                                                                .AllowAnyMethod()));
+            // Add Authentication
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                     .AddJwtBearer(options =>
-                        options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                        options.TokenValidationParameters = new TokenValidationParameters
                         {
                             ValidateIssuer = true,
                             ValidateAudience = true,
                             ValidateLifetime = true,
                             ValidateIssuerSigningKey = true,
-                            ValidIssuer = Configuration["JWT:Issuer"],
-                            ValidAudience = Configuration["JWT:Audience"],
-                            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:SecretKey"])),
+                            ValidIssuer = Configuration["Jwt:Issuer"],
+                            ValidAudience = Configuration["Jwt:Audience"],
+                            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:SecretKey"])),
                             ClockSkew = TimeSpan.Zero
                         });
+
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -78,25 +75,14 @@ namespace BackEnd
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-            }
-            app.UseStaticFiles();
-
-            app.UseCors("AllowQs_AsNgApp");
-
+            app.UseCors("AllowWebapp");
             app.UseRouting();
-
             app.UseAuthentication();
-
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllers();
             });
         }
     }
