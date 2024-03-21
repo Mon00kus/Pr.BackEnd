@@ -50,7 +50,7 @@ namespace BackEnd.Controllers
         public async Task<IActionResult> GetListCuestionarioByUSer()
         {
             try
-            {
+            {   
                 var identity = HttpContext.User.Identity as ClaimsIdentity;
                 int idUsuario = JwtConfigurator.GetTokenIdUsuario(identity);
                 var listCuestionario = await _cuestionarioService.GetListCuestionarioByUser(idUsuario);
