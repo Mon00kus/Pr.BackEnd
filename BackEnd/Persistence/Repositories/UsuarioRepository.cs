@@ -25,13 +25,13 @@ namespace BackEnd.Persistence.Repositories
 
         public async Task<bool> ValidateExistence(Usuario usuario)
         {
-            var validateExistence = await _context.Usuario.AnyAsync(x => x.NombreUsuario == usuario.NombreUsuario);
+            var validateExistence = await _context.Usuarios.AnyAsync(x => x.NombreUsuario == usuario.NombreUsuario);
             return validateExistence;
         }
 
         public async Task<Usuario> ValidatePassword(int idUsuario, string passwordAnterior)
         {
-            var usuario = await _context.Usuario.Where(x => x.Id == idUsuario && x.Password == passwordAnterior).FirstOrDefaultAsync();
+            var usuario = await _context.Usuarios.Where(x => x.Id == idUsuario && x.Password == passwordAnterior).FirstOrDefaultAsync();
             return usuario;
 
         }

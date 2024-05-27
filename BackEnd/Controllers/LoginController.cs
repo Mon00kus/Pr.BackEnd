@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using BackEnd.Domain.IServices;
 using BackEnd.Domain.Models;
 using BackEnd.Utils;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
 namespace BackEnd.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class LoginController : ControllerBase
     {
         private readonly ILoginService _loginService;
@@ -30,9 +27,14 @@ namespace BackEnd.Controllers
             {
                 usuario.Password = Encriptar.EncriptarPassword(usuario.Password);
                 var user = await _loginService.ValidateUser(usuario);
+
+
+
+
+
                 if(user == null)
                 {
-                    return BadRequest(new { message = "Usuario o contraseña invalidos" });
+                    return BadRequest(new { message = "Usuario ó contraseña invalidos" });
                 }
                 string tokenString = JwtConfigurator.GetToken(user, _config);
                 return Ok(new { token = tokenString });

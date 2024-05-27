@@ -19,7 +19,7 @@ namespace BackEnd.Persistence.Repositories
 
         public async Task<Cuestionario> BuscarCuestionario(int idCuestionario, int idUsuario)
         {
-            var cuestionario = await _context.Cuestionario
+            var cuestionario = await _context.Cuestionarios
                 .Where(x=>x.Id==idCuestionario && x.Activo==1).FirstOrDefaultAsync();
             return cuestionario;
         }
@@ -39,7 +39,7 @@ namespace BackEnd.Persistence.Repositories
 
         public async Task<Cuestionario> GetCuestionario(int idCuestionario)
         {
-            var cuestionario = await _context.Cuestionario
+            var cuestionario = await _context.Cuestionarios
                 .Where(x=> x.Activo==1 && x.Id==idCuestionario )
                 .Include(x=> x.listPreguntas)
                 .ThenInclude(x=> x.listRespuestas)
@@ -49,14 +49,14 @@ namespace BackEnd.Persistence.Repositories
 
         public async Task<List<Cuestionario>> GetListCuestionarioByUser(int idUsuario)
         {
-            var listCuestionario = await _context.Cuestionario
+            var listCuestionario = await _context.Cuestionarios
                 .Where(x => x.Activo==1 && x.UsuarioId==idUsuario).ToListAsync();
             return listCuestionario;
         }
 
         public Task<List<Cuestionario>> GetListCuestionario()
         {
-            var listCuestionario = _context.Cuestionario.Where(x => x.Activo == 1)
+            var listCuestionario = _context.Cuestionarios.Where(x => x.Activo == 1)
                 .Select(o => new Cuestionario
                 {
                     Id = o.Id,
