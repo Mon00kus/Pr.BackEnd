@@ -22,7 +22,7 @@ namespace BackEnd.Persistence.Context
             // Configuración adicional para evitar múltiples caminos en cascada
             modelBuilder.Entity<RespuestaCuestionarioDetalle>()
                 .HasOne(r => r.RespuestaCuestionario)
-                .WithMany(r => r.ListRespuestaCuestionarioDetalle)
+                .WithMany(r => r.ListRtaCuestionarioDetalle)
                 .HasForeignKey(r => r.RespuestaCuestionarioId)
                 .OnDelete(DeleteBehavior.Cascade);  // Asumiendo que deseas mantener la eliminación en cascada aquí
 

@@ -28,9 +28,7 @@ namespace BackEnd.Persistence.Repositories
 
         public async Task<List<RespuestaCuestionario>> ListRespuestaCuestionario(int idCuestionario, int idUsuario)
         {
-            var listRespCuestionario = await _context.RespuestasCuestionarios.Where(rq=>rq.Id == idCuestionario && 
-                rq.Activo == 1 &&
-                rq.Cuestionario.UsuarioId ==  idUsuario).OrderByDescending(rq=> rq.Fecha).ToListAsync();
+            var listRespCuestionario = await _context.RespuestasCuestionarios.Where(rq=>rq.CuestionarioId == idCuestionario && rq.Activo == 1 && rq.Cuestionario.UsuarioId ==  idUsuario).OrderByDescending(rq=> rq.Fecha).ToListAsync();
 
             return listRespCuestionario;
         }
@@ -53,14 +51,19 @@ namespace BackEnd.Persistence.Repositories
 
         public async Task<int> GetIdCuestionarioByIdRespuesta(int idRespuestaCuestionario)
         {
-            var cuestionario = await _context.RespuestasCuestionarios.Where(rq => rq.Id == idRespuestaCuestionario
-                                                                        && rq.Activo == 1).FirstOrDefaultAsync();
+            var cuestionario = await _context
+                .RespuestasCuestionarios
+                .Where(rq => rq.Id == idRespuestaCuestionario && rq.Activo == 1)
+                .FirstOrDefaultAsync();
             return cuestionario.CuestionarioId;
         }
 
         public async Task<List<RespuestaCuestionarioDetalle>> GetListRespuestas(int idRespuestaCuestionario)
         {
-            var listRespuestas = await _context.RespuestasCuestionariosDetalles.Where(rq => rq.RespuestaCuestionarioId == idRespuestaCuestionario).Select(rq => new RespuestaCuestionarioDetalle{ RespuestaId = rq.RespuestaId}).ToListAsync();
+            var listRespuestas = await _context.RespuestasCuestionariosDetalles
+                                .Where(rq => rq.RespuestaCuestionarioId == idRespuestaCuestionario)
+                                .Select(rq => new RespuestaCuestionarioDetalle{ RespuestaId = rq.RespuestaId})
+                                .ToListAsync();
             return listRespuestas;
         }
     }

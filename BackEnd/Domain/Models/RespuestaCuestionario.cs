@@ -16,6 +16,6 @@ namespace BackEnd.Domain.Models
         public int Activo { get; set; }
         public int CuestionarioId { get; set; }
         public Cuestionario Cuestionario { get; set; }
-        public List<RespuestaCuestionarioDetalle> ListRespuestaCuestionarioDetalle { set; get; }
+        public List<RespuestaCuestionarioDetalle> ListRtaCuestionarioDetalle { set; get; }
     }
 }
